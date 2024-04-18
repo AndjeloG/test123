@@ -11,6 +11,15 @@ pipeline {
         booleanParam description: 'Slati email', name: 'SEND_EMAIL'
         }
     stages {
+        stage('Dynamic') {
+                when {
+                    branch: "feature/mutli/*"
+                }
+            steps {
+                cleanWs()
+                echo (message: "Ovo je Dynamic")
+        }
+        }
         stage('Download') {
             steps {
                 cleanWs()
@@ -76,14 +85,6 @@ pipeline {
                     }
                 }
             }
-        }
-        stage('Dynamic') {
-            steps {
-                when {
-                    branch: "feature/mutli/*"
-                }
-                cleanWs()
-                echo (message: "Ovo je Dynamic")
         }
         stage('Publish') {
             steps {
