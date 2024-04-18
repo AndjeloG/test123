@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Dynamic') {
                 when {
-                    branch "feature/mutli/*"
+                    branch "feature/multi/*"
                 }
             steps {
                 cleanWs()
