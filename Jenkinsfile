@@ -77,6 +77,14 @@ pipeline {
                 }
             }
         }
+        stage('Dynamic') {
+            steps {
+                when {
+                    branch: "feature/mutli/*"
+                }
+                cleanWs()
+                echo (message: "Ovo je Dynamic")
+        }
         stage('Publish') {
             steps {
                 echo (message: "Ovo je Publish")
